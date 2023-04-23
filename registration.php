@@ -1,3 +1,9 @@
+<?php 
+session_start();
+if(isset($_SESSION['user'])) {
+    header("Location: index.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -82,6 +88,9 @@
                 <input type="submit" value="Register" name="submit" class="btn btn-primary">
             </div>
         </form>
+        <div>
+            <p>Already Registred ?<a href="login.php">Login Here</a></p>
+        </div>
     </div>
 </body>
 

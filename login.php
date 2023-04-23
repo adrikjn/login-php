@@ -1,3 +1,9 @@
+<?php 
+session_start();
+if(isset($_SESSION['user'])) {
+    header("Location: index.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +26,9 @@
             $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
             if($user){
                 if(password_verify($password, $user["password"])){
+                    session_start();
+                    $_SESSION["user"] = "yes";
+                    //  ! REVOIR
                     header("Location: index.php");
                     die();
                 }else {
@@ -41,6 +50,9 @@
                 <input type="submit" value="Login" name="login" class="btn btn-primary">
             </div>
         </form>
+        <div>
+            <p>Not registered yet ? <a href="registration.php">Register Here</a></p>
+        </div>
     </div>
 </body>
 </html>
